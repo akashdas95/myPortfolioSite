@@ -23,7 +23,18 @@ const submitForm = (e) =>{
     let date = Date.now();
 
     saveMessage(name,email,textarea,date);
+    if(saveMessage){
+      document.querySelector(".alert").style.display = "block";
+    }
+
+    
+    setTimeout(()=>{
+      document.querySelector(".alert").style.display = "none";  
+    },5000);
+
  }
+ 
+ 
 
 document.getElementById("contactForm").addEventListener('submit',submitForm);
 
@@ -35,7 +46,9 @@ const saveMessage = (name,email,textarea,date) =>{
    newMessageRef.set({
     name:name,
     email:email,
-    textarea:textarea, 
+    message:textarea, 
     date: date
    });
 }
+
+
